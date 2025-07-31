@@ -11,8 +11,12 @@ public class Board {
     private int manhattan;
     private int hamming;
 
-    // create a board from an n-by-n array of tiles,
-    // where tiles[row][col] = tile at (row, col)
+    /**
+     * Constructor that initializes the board with a given 2D array of tiles.
+     * The tiles are stored in a 1D array for easier manipulation.
+     *
+     * @param tiles a 2D array representing the board, where tiles[row][col] = tile at (row, col)
+     */
     public Board(int[][] tiles) {
         this.dimension = tiles.length;
         this.tiles = new int[this.dimension * this.dimension];
@@ -27,7 +31,9 @@ public class Board {
         this.manhattan = -1;
     }
 
-    // string representation of this board
+    /**
+     * @return a string representation of the board
+     */
     public String toString() {
         StringBuilder boardString = new StringBuilder();
         boardString.append(this.dimension);
@@ -58,12 +64,16 @@ public class Board {
         return (n - 1) % this.dimension;
     }
 
-    // board dimension n
+    /**
+     * @return the dimension of the board
+     */
     public int dimension() {
         return this.dimension;
     }
 
-    // number of tiles out of place
+    /**
+     * @return the number of tiles out of place
+     */
     public int hamming() {
         if (this.hamming != -1) {
             return this.hamming;
@@ -95,7 +105,11 @@ public class Board {
         return (n == 0);
     }
 
-    // sum of Manhattan distances between tiles and goal
+    /**
+     * Calculates the Manhattan distance of the board.
+     *
+     * @return sum of Manhattan distances between tiles and goal
+     */
     public int manhattan() {
         if (this.manhattan != -1) {
             return this.manhattan;
@@ -121,12 +135,15 @@ public class Board {
         return res;
     }
 
-    // is this board the goal board?
+    /**
+     * Checks whether this board is the goal board.
+     *
+     * @return true if the board is in the goal state, false otherwise
+     */
     public boolean isGoal() {
         return this.hamming() == 0;
     }
 
-    // does this board equal y?
     public boolean equals(Object y) {
         if (y == null || y.getClass() != this.getClass()) {
             return false;
@@ -145,7 +162,9 @@ public class Board {
         return Arrays.equals(this.tiles, that.tiles);
     }
 
-    // all neighboring boards
+    /**
+     * @return all neighboring boards
+     */
     public Iterable<Board> neighbors() {
         Queue<Board> neighbors = new Queue<Board>();
 
@@ -220,7 +239,12 @@ public class Board {
         return StdRandom.uniformInt(this.tiles.length);
     }
 
-    // a board that is obtained by exchanging any pair of tiles
+    /**
+     * Returns a board that is a twin (a board that is obtained by exchanging any pair of tiles)
+     * of this board.
+     *
+     * @return a twin board
+     */
     public Board twin() {
         if (this.twin != null) {
             return this.twin;
@@ -239,8 +263,8 @@ public class Board {
         return this.twin;
     }
 
-    // unit testing (not graded)
     public static void main(String[] args) {
+        // unit testing (not graded)
         int[][] tiles = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
         Board bGoal = new Board(tiles);
 

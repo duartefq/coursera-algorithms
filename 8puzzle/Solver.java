@@ -61,7 +61,9 @@ public class Solver {
         }
     }
 
-    // find a solution to the initial board (using the A* algorithm)
+    /**
+     * Find a solution to the initial board (using the A* algorithm)
+     */
     public Solver(Board initial) {
         if (initial == null) {
             throw new IllegalArgumentException();
@@ -127,22 +129,27 @@ public class Solver {
         }
     }
 
-    // is the initial board solvable? (see below)
+    /**
+     * is the initial board solvable? (see below)
+     */
     public boolean isSolvable() {
         return this.minMoves > -1;
     }
 
-    // min number of moves to solve initial board; -1 if unsolvable
+    /**
+     * @return min number of moves to solve initial board; -1 if unsolvable
+     */
     public int moves() {
         return this.minMoves;
     }
 
-    // sequence of boards in a shortest solution; null if unsolvable
+    /**
+     * @return sequence of boards in a shortest solution; null if unsolvable
+     */
     public Iterable<Board> solution() {
         return this.isSolvable() ? this.solutionStack : null;
     }
 
-    // test client (see below)
     public static void main(String[] args) {
         // create initial board from file
         In in = new In(args[0]);
