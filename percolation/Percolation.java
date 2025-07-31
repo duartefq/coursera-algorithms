@@ -19,7 +19,9 @@ public class Percolation {
 
     private int count;
 
-    // creates n-by-n grid, with all sites initially blocked
+    /**
+     * creates n-by-n grid, with all sites initially blocked
+     */
     public Percolation(int n) {
         if (n <= 0) {
             throw new IllegalArgumentException();
@@ -63,7 +65,9 @@ public class Percolation {
         ufPerc.union(p, q);
     }
 
-    // opens the site (row, col) if it is not open already
+    /**
+     * opens the site (row, col) if it is not open already
+     */
     public void open(int row, int col) {
         validate(row, col);
 
@@ -97,14 +101,18 @@ public class Percolation {
         }
     }
 
-    // is the site (row, col) open?
+    /**
+     * @return is the site (row, col) open?
+     */
     public boolean isOpen(int row, int col) {
         validate(row, col);
 
         return grid[row - 1][col - 1];
     }
 
-    // is the site (row, col) full?
+    /**
+     * @return is the site (row, col) full?
+     */
     public boolean isFull(int row, int col) {
         validate(row, col);
 
@@ -120,12 +128,16 @@ public class Percolation {
         return ufFull.find(current) == ufFull.find(virtualTop);
     }
 
-    // returns the number of open sites
+    /**
+     * @return number of open sites
+     */
     public int numberOfOpenSites() {
         return count;
     }
 
-    // does the system percolate?
+    /**
+     * @return does the system percolate?
+     */
     public boolean percolates() {
         if (length == 1) {
             return grid[0][0];
@@ -133,7 +145,6 @@ public class Percolation {
         return ufPerc.find(virtualTop) == ufPerc.find(virtualBottom);
     }
 
-    // test client (optional)
     public static void main(String[] args) {
         Percolation p = new Percolation(2);
         // p.open(1, 1);

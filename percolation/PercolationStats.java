@@ -14,7 +14,9 @@ public class PercolationStats {
     private double confidenceLo;
     private double confidenceHi;
 
-    // perform independent trials on an n-by-n grid
+    /**
+     * perform independent trials on an n-by-n grid
+     */
     public PercolationStats(int n, int trials) {
         if (n <= 0 || trials <= 0) {
             throw new IllegalArgumentException();
@@ -43,28 +45,36 @@ public class PercolationStats {
         confidenceHi = mean + ((CONFIDENCE_95 * stddev) / Math.sqrt(trials));
     }
 
-    // sample mean of percolation threshold
+    /**
+     * @return sample mean of percolation threshold
+     */
     public double mean() {
         return mean;
     }
 
-    // sample standard deviation of percolation threshold
+    /**
+     * @return sample standard deviation of percolation threshold
+     */
     public double stddev() {
         return stddev;
     }
 
-    // low endpoint of 95% confidence interval
+    /**
+     * @return low endpoint of 95% confidence interval
+     */
     public double confidenceLo() {
         return confidenceLo;
     }
 
-    // high endpoint of 95% confidence interval
+    /**
+     * @return high endpoint of 95% confidence interval
+     */
     public double confidenceHi() {
         return confidenceHi;
     }
 
-    // test client (see below)
     public static void main(String[] args) {
+        // test client (see below)
         if (args.length != 2) {
             throw new IllegalArgumentException("Please pass two arguments n and T.");
         }

@@ -22,11 +22,14 @@ import edu.princeton.cs.algs4.StdDraw;
 import java.awt.Font;
 
 public class PercolationVisualizer {
-
-    // delay in milliseconds (controls animation speed)
+    /**
+     * delay in milliseconds (controls animation speed)
+     */
     private static final int DELAY = 100;
 
-    // draw n-by-n percolation system
+    /**
+     * Draw n-by-n percolation system
+     */
     public static void draw(Percolation perc, int n) {
         StdDraw.clear();
         StdDraw.setPenColor(StdDraw.BLACK);
@@ -83,4 +86,3 @@ public class PercolationVisualizer {
         }
     }
 }
-
