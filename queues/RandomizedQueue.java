@@ -39,23 +39,31 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         }
     }
 
-    // construct an empty randomized queue
+    /**
+     * construct an empty randomized queue
+     */
     public RandomizedQueue() {
         this.queue = (Item[]) new Object[INIT_CAPACITY];
         this.head = 0;
     }
 
-    // is the randomized queue empty?
+    /**
+     * @return is the randomized queue empty?
+     */
     public boolean isEmpty() {
         return this.head == 0;
     }
 
-    // return the number of items on the randomized queue
+    /**
+     * @return the number of items on the randomized queue
+     */
     public int size() {
         return this.head;
     }
 
-    // add the item
+    /**
+     * add the item
+     */
     public void enqueue(Item item) {
         if (item == null) {
             throw new IllegalArgumentException();
@@ -68,7 +76,12 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         this.queue[this.head++] = item;
     }
 
-    // remove and return a random item
+    /**
+     * remove and return a random item
+     *
+     * @return a random item
+     * @throws NoSuchElementException if the queue is empty
+     */
     public Item dequeue() {
         if (this.isEmpty()) {
             throw new NoSuchElementException();
@@ -89,7 +102,10 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         return element;
     }
 
-    // return a random item (but do not remove it)
+    /**
+     * @return a random item (but do not remove it)
+     * @throws NoSuchElementException if the queue is empty
+     */
     public Item sample() {
         if (this.isEmpty()) {
             throw new NoSuchElementException();
@@ -112,13 +128,17 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         this.queue = copy;
     }
 
-    // return an independent iterator over items in random order
+    /**
+     * @return an independent iterator over items in random order
+     */
     public Iterator<Item> iterator() {
         return new ListIterator();
     }
 
 
-    // unit testing (required)
+    /**
+     * unit testing (required)
+     */
     public static void main(String[] args) {
         RandomizedQueue<String> d = new RandomizedQueue<String>();
 

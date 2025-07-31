@@ -41,24 +41,32 @@ public class Deque<Item> implements Iterable<Item> {
         }
     }
 
-    // construct an empty deque
+    /**
+     * construct an empty deque
+     */
     public Deque() {
         this.first = null;
         this.last = null;
         this.size = 0;
     }
 
-    // is the deque empty?
+    /**
+     * @return is the deque empty?
+     */
     public boolean isEmpty() {
         return this.first == null && this.last == null;
     }
 
-    // return the number of items on the deque
+    /**
+     * @return the number of items on the deque
+     */
     public int size() {
         return this.size;
     }
 
-    // add the item to the front
+    /**
+     * add the item to the front
+     */
     public void addFirst(Item item) {
         this.validate(item);
         Node<Item> oldFirst = this.first;
@@ -77,7 +85,9 @@ public class Deque<Item> implements Iterable<Item> {
         this.size++;
     }
 
-    // add the item to the back
+    /**
+     * add the item to the back
+     */
     public void addLast(Item item) {
         this.validate(item);
 
@@ -97,7 +107,9 @@ public class Deque<Item> implements Iterable<Item> {
         this.size++;
     }
 
-    // remove and return the item from the front
+    /**
+     * remove and return the item from the front
+     */
     public Item removeFirst() {
         this.checkEmptyList();
         Node<Item> oldFirst = this.first;
@@ -116,7 +128,10 @@ public class Deque<Item> implements Iterable<Item> {
         return oldFirst.value;
     }
 
-    // remove and return the item from the back
+    /**
+     * remove and return the item from the back
+     * @return the item removed from the back
+     */
     public Item removeLast() {
         this.checkEmptyList();
         Node<Item> oldLast = this.last;
@@ -135,19 +150,25 @@ public class Deque<Item> implements Iterable<Item> {
         return oldLast.value;
     }
 
-    // return an iterator over items in order from front to back
+    /**
+     * @return an iterator over items in order from front to back
+     */
     public Iterator<Item> iterator() {
         return new ListIterator();
     }
 
-    // support method: validate item
+    /**
+     * support method: validate item
+     */
     private void validate(Item item) {
         if (item == null) {
             throw new IllegalArgumentException();
         }
     }
 
-    // support method: check if can remove item
+    /**
+     * support method: check if can remove item
+     */
     private void checkEmptyList() {
         if (this.isEmpty()) {
             throw new NoSuchElementException();
@@ -155,7 +176,9 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
 
-    // unit testing (required)
+    /**
+     * unit testing (required)
+     */
     public static void main(String[] args) {
         Deque<Integer> d = new Deque<Integer>();
 
