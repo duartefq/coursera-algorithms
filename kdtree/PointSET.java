@@ -1,7 +1,6 @@
 /* *****************************************************************************
- *  Name:
- *  Date:
- *  Description:
+ *  Name: Duarte Fernandes
+ *  Date: 2025-07-28
  **************************************************************************** */
 
 import edu.princeton.cs.algs4.Point2D;
@@ -12,32 +11,48 @@ import edu.princeton.cs.algs4.StdDraw;
 public class PointSET {
     private SET<Point2D> set;
 
-    // construct an empty set of points
+    /**
+     * Construct an empty set of points
+     */
     public PointSET() {
         this.set = new SET<Point2D>();
     }
 
-    // is the set empty?
+    /**
+     * @return true if the set is empty, false otherwise
+     */
     public boolean isEmpty() {
         return this.set.isEmpty();
     }
 
-    // number of points in the set
+    /**
+     * @return number of points in the set
+     */
     public int size() {
         return this.set.size();
     }
 
-    // add the point to the set (if it is not already in the set)
+    /**
+     * Add the point to the set (if it is not already in the set).
+     *
+     * @throws IllegalArgumentException if p is null
+     */
     public void insert(Point2D p) {
         this.set.add(p);
     }
 
-    // does the set contain point p?
+    /**
+     * Checks if the point p is in the set.
+     *
+     * @return does the set contain point p?
+     */
     public boolean contains(Point2D p) {
         return this.set.contains(p);
     }
 
-    // draw all points to standard draw
+    /**
+     * Draw all points to standard draw.
+     */
     public void draw() {
         StdDraw.setPenColor(StdDraw.BLACK);
         for (Point2D p : this.set) {
@@ -45,7 +60,10 @@ public class PointSET {
         }
     }
 
-    // all points that are inside the rectangle (or on the boundary)
+    /**
+     * @return all points that are inside the rectangle (or on the boundary)
+     * @throws IllegalArgumentException if rect is null
+     */
     public Iterable<Point2D> range(RectHV rect) {
         if (rect == null) {
             throw new IllegalArgumentException();
@@ -62,7 +80,10 @@ public class PointSET {
         return list;
     }
 
-    // a nearest neighbor in the set to point p; null if the set is empty
+    /**
+     * @return a nearest neighbor in the set to point p; null if the set is empty
+     * @throws IllegalArgumentException if p is null
+     */
     public Point2D nearest(Point2D p) {
         if (p == null) {
             throw new IllegalArgumentException();

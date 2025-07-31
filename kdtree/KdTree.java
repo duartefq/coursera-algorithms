@@ -1,7 +1,6 @@
 /* *****************************************************************************
- *  Name:
- *  Date:
- *  Description:
+ *  Name: Duarte Fernandes
+ *  Date: 2025-07-28
  **************************************************************************** */
 
 import edu.princeton.cs.algs4.Point2D;
@@ -13,7 +12,9 @@ import java.util.ArrayList;
 public class KdTree {
     private KdTree.Node root;     // root of the BST
 
-    // BST helper node data type
+    /**
+     * BST helper node data type
+     */
     private static class Node {
         private Point2D p;           // key
         private KdTree.Node left, right;  // links to left and right subtrees
@@ -33,16 +34,19 @@ public class KdTree {
         }
     }
 
-    // construct an empty set of points
+    /**
+     * construct an empty set of points
+     */
     public KdTree() {
     }
 
-    // is the set empty?
     public boolean isEmpty() {
         return this.root == null;
     }
 
-    // number of points in the set
+    /**
+     * number of points in the set
+     */
     public int size() {
         return size(this.root);
     }
@@ -55,7 +59,9 @@ public class KdTree {
         return x.size;
     }
 
-    // add the point to the set (if it is not already in the set)
+    /**
+     * add the point to the set (if it is not already in the set)
+     */
     public void insert(Point2D p) {
         if (p == null) {
             throw new IllegalArgumentException();
@@ -101,7 +107,13 @@ public class KdTree {
         return current;
     }
 
-    // does the set contain point p?
+    /**
+     * Checks if the point p is in the kd-tree.
+     *
+     * @return does the set contain point p?
+     * @throws IllegalArgumentException if p is null
+     *
+     */
     public boolean contains(Point2D p) {
         if (p == null) {
             throw new IllegalArgumentException();
@@ -129,7 +141,9 @@ public class KdTree {
         }
     }
 
-    // draw all points to standard draw
+    /**
+     * draw all points to standard draw
+     */
     public void draw() {
         drawLines(root, 0);
         drawPoints(root);
@@ -167,7 +181,10 @@ public class KdTree {
         drawPoints(current.right);
     }
 
-    // all points that are inside the rectangle (or on the boundary)
+    /**
+     * @return all points that are inside the rectangle (or on the boundary)
+     * @throws IllegalArgumentException if rect is null
+     */
     public Iterable<Point2D> range(RectHV rect) {
         if (rect == null) {
             throw new IllegalArgumentException();
@@ -213,7 +230,10 @@ public class KdTree {
         return list;
     }
 
-    // a nearest neighbor in the set to point p; null if the set is empty
+    /**
+     * @return a nearest neighbor in the set to point p; null if the set is empty
+     * @throws IllegalArgumentException if p is null
+     */
     public Point2D nearest(Point2D p) {
         if (p == null) {
             throw new IllegalArgumentException();
@@ -241,7 +261,7 @@ public class KdTree {
      * @param p
      * @param level
      * @param champion
-     * @return
+     * @return the closest point found so far
      */
     private Point2D nearest(Node current, Point2D p, int level, Point2D champion) {
         if (current == null) {
